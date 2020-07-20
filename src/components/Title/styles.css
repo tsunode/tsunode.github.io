@@ -1,0 +1,7 @@
+h2 {
+    display: inline-block;
+    border-bottom: 2px solid #fff;
+    padding-bottom: 3px;
+    margin: 40px 10px;
+    font-weight: 500;
+}

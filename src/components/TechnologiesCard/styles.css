@@ -1,0 +1,48 @@
+.item{
+    width: 150px;
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffff;
+    color: #064D4D;
+    margin: 5px;
+    border-radius: 5px;
+    box-shadow: 10px 5px 10px 0px rgba(0, 0, 0, 0.4);
+    transition: 0.5s;
+}
+
+.item:hover .item-description{
+    display: block;
+}
+
+.item:hover{
+    width: 250px;
+    height: 250px;
+    justify-content: flex-start;
+    padding-top: 10px;
+}
+
+
+.item svg{
+    width: 90px !important;
+    height: 90px;
+    align-content: flex-start;
+}
+
+.item-description{
+    display: none;
+    padding: 15px;
+    text-align: center;
+}
+
+.item-description span{
+    font-size: 1.2rem;
+    font-weight: bold;
+    font-style: italic;
+}
+
+.item-description p{
+    margin-top: 10px;
+}
