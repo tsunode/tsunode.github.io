@@ -98,56 +98,101 @@ button:hover .icon {
   transform: rotate(90deg);
 }
 
-#about {
-}
-
 #about .profile {
   display: flex;
   align-items: center;
-  background-color: rgba(255, 255, 255, 0.2);
-  /* border-radius: 250px; */
   padding: 5px;
 }
 
-#about img {
-  max-width: 250px;
-  max-height: 250px;
-  border-radius: 50%;
-  box-shadow: 13px 3px 20px 0px rgba(0, 0, 0, 0.4);
+.profile-img {
+  background-color: #ffffff;
+  padding: 10px 10px 25px;
+  color: #000;
+  font-size: 0.8rem;
+  font-weight: bold;
+  text-align: center;
+  border-bottom-left-radius: 60px 5px;
+  box-shadow: -15px 10px 15px rgba(0, 0, 0, 0.4);
+  transform: rotate(-5deg);
 }
 
-#about .profile p {
-  /* background-color */
-  align-self: center;
-  padding: 30px;
-  border-radius: 15px;
+.profile-img img {
+  max-width: 275px;
+  max-height: 275px;
+}
+
+.post-it-box {
+  display: flex;
+  margin-left: 10px;
+}
+
+.post-it-box div {
+  position: relative;
+  width: 250px;
+  height: 250px;
+  display: flex;
+  align-items: center;
+  color: #000;
+  text-align: center;
+  margin: 10px;
+}
+
+.post-it-box div img {
+  top: -35px;
+  left: 100px;
+  position: absolute;
+  width: 75px;
+  height: 75px;
+}
+
+ul {
+  list-style-type: none;
+}
+
+li {
+  margin-top: 5px;
+}
+
+.profile-description {
+  background-color: #064d4d;
   margin: auto;
+  border: 3px solid #fff;
+  padding: 45px 0;
+}
+
+.profile-description p {
+  background-color: #064d4d;
+  text-align: center;
+  margin: 0 -5px 0 -5px;
+  padding: 10px;
   max-width: 700px;
   font-size: 1.8rem;
-  /* color: #000; */
 }
 
-#technologies-wrap{
+#technologies-wrap {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
   margin-bottom: 15px;
 }
 
-
-
 @media (max-width: 480px) {
   #home {
     background-image: url("../../assets/img/background-mobile.jpeg");
   }
-  
+
   #title span {
     font-size: 1.2rem;
+  }
+
+  #technologies-wrap {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 }
 
 @media (max-width: 767px) {
-
   #title {
     flex-direction: column;
   }
