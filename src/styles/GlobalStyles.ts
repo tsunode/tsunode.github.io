@@ -26,6 +26,8 @@ export default createGlobalStyle`
     font-family: 'Montserrat', sans-serif;
     font-size: 16px;
     color: var(--white);
+
+    transition: 0.6s;
   }
 
   h1 {
@@ -49,7 +51,7 @@ export default createGlobalStyle`
   }
 
   :root {
-    --primary: #064D4D;
+    --primary: #0c0c09;
     --white: #FFF;
   }
 `;

@@ -1,12 +1,23 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { IconPrefix, IconName } from '@fortawesome/fontawesome-svg-core';
 import { faArrowRight, } from '@fortawesome/free-solid-svg-icons';
 
-import { Container, HomeSection, Logo, Button } from './styles';
+import {
+	Container,
+	HomeSection,
+	Logo,
+	Button,
+	Profile,
+	PolaroidImage,
+	ProfileDescription,
+	Header,
+	Title,
+	Bars
+} from './styles';
 
 // componentes
-import Title from '../../components/Title';
+// import Title from '../../components/Title';
 import TechnologiesCard from '../../components/TechnologiesCard';
 
 import profile from '../../assets/img/profile.jpg';
@@ -19,9 +30,10 @@ interface Technologies {
 
 const Home = () => {
 
-
-
 	const [technologies, setTechnologies] = useState<Technologies[]>();
+
+	// REFs
+	const headerRef = useRef<HTMLElement>(null);
 
 	useEffect(() => {
 
@@ -61,6 +73,24 @@ const Home = () => {
 
 	}, []);
 
+	useEffect(() => window.onscroll = handleScroll, []);
+
+	function handleScroll() {
+
+	}
+
+	function handlePageToHeader() {
+
+		if (headerRef.current) {
+			let top = headerRef.current.offsetTop;
+
+			window.scrollTo({
+				top,
+				behavior:'smooth'
+			});
+		}
+
+	}
 
 	return (
 		<div>
@@ -71,23 +101,33 @@ const Home = () => {
 							<h1>GABRIEL TSUNODA</h1>
 							<span> {"= () => { Full Stack }"}</span>
 						</Logo>
-						<Button type="button" className="border">
+						<Button type="button" onClick={handlePageToHeader}>
 							Ver meu trabalho
                             <FontAwesomeIcon icon={faArrowRight} className="icon" />
 						</Button>
 					</div>
 
 				</HomeSection>
-				
+
+				<Header ref={headerRef}>
+					<Title>
+						{"<Sobre mim />"}
+					</Title>
+					<Bars>
+						<input type="checkbox" name="" id="check-bar" />
+						<label htmlFor="check-bar">
+							<div></div>
+							<div></div>
+							<div></div>
+						</label>
+					</Bars>
+				</Header>
 				<Container>
-				
-				</Container>
-				{/* <Container>
-					<section id="about">
-						<Title name="Sobre mim"></Title>
-						<div className="profile">
-							<div className="profile-img">
-								<img src={profile} alt="" />
+					<section>
+						<Profile>
+							<PolaroidImage>
+								<img src={profile} alt="profile image" />
+
 								<ul>
 									<li>
 										Cursando Sistemas de Informação
@@ -96,16 +136,22 @@ const Home = () => {
 										Leva o Japônes como uma segunda língua
                                     </li>
 								</ul>
-							</div>
-							<div className="profile-description">
+							</PolaroidImage>
+							<ProfileDescription>
 								<p>
 									Desenvolvedor Full Stack, aplicações de sites responsivos,
 									aplicativos mobile e APIs, utilizando as melhores práticas e
 									tecnologias do mercado atual.
                                 </p>
-							</div>
-						</div>
+							</ProfileDescription>
+						</Profile>
 					</section>
+
+					<section>
+
+					</section>
+				</Container>
+				{/* <Container>
 
 					<section id="technologies">
 						<Title name="Tecnologias utilizadas"></Title>
