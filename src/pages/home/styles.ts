@@ -37,20 +37,20 @@ const Bars = styled.div`
   }
 
   input:checked + label div:nth-child(2) {
-    transform: translateX(25px);
+    transform: translateX(30px);
     opacity: 0;
   }
 
   input:checked + label div:nth-child(1) {
-    transform: rotate(45deg) translateY(22px);
+    transform: rotate(-45deg) translateY(22px);
   }
 
   input:checked + label div:nth-child(3) {
-    transform: rotate(-45deg) translateY(-22px);
+    transform: rotate(45deg) translateY(-22px);
   }
 
   input:checked + label {
-    transform: translateX(20px);
+    transform: translateX(-20px);
   }
 
   label {
@@ -145,7 +145,7 @@ const Logo = styled.div`
   }
 
   h1 {
-    animation: ${translateXAnimation} 2s;
+    animation: ${opacityAnimation} 2s;
   }
 
   span {
@@ -158,7 +158,7 @@ const Logo = styled.div`
     font-size: 1.2rem;
     font-style: italic;
 
-    animation: ${opacityAnimation} 2s;
+    animation: ${translateXAnimation} 2s;
   }
 `;
 
@@ -229,6 +229,14 @@ const PolaroidImage = styled.div`
   img {
     max-width: 275px;
     max-height: 275px;
+  }
+
+  ul {
+    list-style-type: none;
+  }
+
+  li {
+    margin-top: 5px;
   }
 `;
 
