@@ -10,6 +10,14 @@ const Container = styled.div`
   padding-left: 15px;
   margin-right: auto;
   margin-left: auto;
+
+  section {
+    margin: 10px 0px 35px;
+  }
+
+  @media(min-width: 1024px){
+    max-width: 1080px;
+  }
 `;
 
 const Header = styled.header`
@@ -259,6 +267,13 @@ const ProfileDescription = styled.div`
   }
 `;
 
+const Wrapper = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin-bottom: 15px;
+`;
+
 export {
   Container,
   HomeSection,
@@ -270,4 +285,5 @@ export {
   Title,
   Bars,
   Header,
+  Wrapper
 };

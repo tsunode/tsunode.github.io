@@ -13,7 +13,8 @@ import {
 	ProfileDescription,
 	Header,
 	Title,
-	Bars
+	Bars,
+	Wrapper
 } from './styles';
 
 // componentes
@@ -31,27 +32,30 @@ interface Technologies {
 const Home = () => {
 
 	const [technologies, setTechnologies] = useState<Technologies[]>();
+	const [title, setTitle] = useState('<Sobre mim />');
 
 	// REFs
 	const headerRef = useRef<HTMLElement>(null);
+	const sectionAboutRef = useRef<HTMLElement>(null);
+	const sectionTechnologiesRef = useRef<HTMLElement>(null);
 
 	useEffect(() => {
 
 		function getTechnologies() {
 			const mockTechnologies = [
 				{
-					name: 'React/React-Native',
-					description: 'Tecnologia utilizada para criação de sites, aplicativos mobile em Android e IOS',
+					name: 'React',
+					description: 'Utilizada para criação de sites, aplicativos mobile em Android e IOS (React-Native)',
 					icon: ['fab', 'react'] as [IconPrefix, IconName]
 				},
 				{
 					name: 'Node JS',
-					description: 'Tecnologia utilizada para criação do back-end, utilizando estrutura de API REST',
+					description: 'Utilizada para criação do back-end, utilizando estrutura de API REST',
 					icon: ['fab', 'node'] as [IconPrefix, IconName]
 				},
 				{
 					name: 'PHP',
-					description: 'Utilizado para desenvolvimento do back-end, principalmente para sites web e pode ser embutido em HTML',
+					description: 'Desenvolvimento de aplicações presentes e atuantes no lado do servidor',
 					icon: ['fab', 'php'] as [IconPrefix, IconName]
 				},
 				{
@@ -61,7 +65,7 @@ const Home = () => {
 				},
 				{
 					name: 'CSS 3',
-					description: 'Responsável pela estilização de sites web, com efeitos de transição, cores, background entre outros.',
+					description: 'Responsável pela estilização, com efeitos, animações, cores, entre outros.',
 					icon: ['fab', 'css3-alt'] as [IconPrefix, IconName]
 				},
 			]
@@ -71,11 +75,19 @@ const Home = () => {
 
 		getTechnologies();
 
+		window.addEventListener('scroll', handleScroll);
+
 	}, []);
 
-	useEffect(() => window.onscroll = handleScroll, []);
-
-	function handleScroll() {
+	function handleScroll(event: Event) {
+		if (sectionAboutRef.current && sectionTechnologiesRef.current) {
+			if (window.scrollY >= sectionAboutRef.current.offsetTop - 250) {
+				setTitle('Sobre mim');
+			}
+			if (window.scrollY >= sectionTechnologiesRef.current.offsetTop - 250) {
+				setTitle('Tecnologias');
+			}
+		}
 
 	}
 
@@ -86,7 +98,7 @@ const Home = () => {
 
 			window.scrollTo({
 				top,
-				behavior:'smooth'
+				behavior: 'smooth'
 			});
 		}
 
@@ -111,7 +123,7 @@ const Home = () => {
 
 				<Header ref={headerRef}>
 					<Title>
-						{"<Sobre mim />"}
+						{title}
 					</Title>
 					<Bars>
 						<input type="checkbox" name="" id="check-bar" />
@@ -122,11 +134,12 @@ const Home = () => {
 						</label>
 					</Bars>
 				</Header>
+
 				<Container>
-					<section>
+					<section ref={sectionAboutRef}>
 						<Profile>
 							<PolaroidImage>
-								<img src={profile} alt="profile image" />
+								<img src={profile} alt="profile" />
 
 								<ul>
 									<li>
@@ -147,28 +160,18 @@ const Home = () => {
 						</Profile>
 					</section>
 
-					<section>
-
-					</section>
-				</Container>
-				{/* <Container>
-
-					<section id="technologies">
-						<Title name="Tecnologias utilizadas"></Title>
-						<div id="technologies-wrap">
+					<section ref={sectionTechnologiesRef}>
+						{/* <Title> name="Tecnologias utilizadas"></Title> */}
+						<Wrapper>
 							{
-								technologies?.map(technology =>
-									<TechnologiesCard  {...technology} />
+								technologies?.map((technology, index) =>
+									<TechnologiesCard id={String(index)} {...technology} />
 								)
 							}
-						</div>
+						</Wrapper>
 					</section>
-					<section id="projects">
-						<Title name="Projetos Desenvolvidos"></Title>
-						<div id="technologies-wrap">
-						</div>
-					</section>
-				</Container> */}
+
+				</Container>
 			</main>
 		</div>
 	)
