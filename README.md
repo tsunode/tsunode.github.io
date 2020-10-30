@@ -7,7 +7,7 @@
    <img style="" src="demo.gif">
 </p>
 
-Este projeto trata-se da criação de um portfólio utilizando reactJS, onde também pude estudar alguns conceitos de styled-componets e um pouco mais de animações utlizando keyframes.
+Este projeto trata-se da criação de um portfólio utilizando react JS, onde também pude estudar alguns conceitos de styled-componets e um pouco mais de animações utilizando keyframes.
 
 Você pode acessar a DEMO <a href="https://tsunodajapa.github.io"> clicando aqui </a>
 
